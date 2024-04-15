@@ -1,0 +1,22 @@
+botApiPageURL: https://core.telegram.org/bots/api
+output: tmp/out/{{name}}.java
+template: template.txt
+breakRow: \r\n
+classNamePrefix: Telegram
+classNameSuffix: 
+primitiveTypes:
+  - String
+  - Integer
+  - Boolean
+  - Long
+  - (.*)Array of .*
+  - List<.*
+propertyRemap:
+  Long or String: String
+  Integer or String: String
+  InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply: Keyboard
+  InputFile or String: InputFile
+  Integer: Long
+  True: Boolean
+  (.*)Array of ([\w|<|>]+): $1List<$2>
+  InputFile or String: InputFile
